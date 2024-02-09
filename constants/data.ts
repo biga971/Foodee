@@ -1,4 +1,10 @@
+import { ImageSourcePropType } from 'react-native';
 
+export interface IHomeData {
+    id: number
+    name: string
+    picture: ImageSourcePropType
+}
 
 export const homeData = [
     {
@@ -28,12 +34,19 @@ export const homeData = [
     },
 ]
 
+export interface IHCheezyData {
+    id: number
+    name: string
+    price: string
+    picture: ImageSourcePropType
+}
+
 export const cheezyData = [
     {
         id: 1,
         name: 'Chedder',
         price: '+$0.79',
-        picture: require('../assets/images/Cheezy/cheese.png'),
+        picture: require('../assets/images/Cheezy/cheese.png')
     },
     {
         id: 2,
@@ -48,6 +61,14 @@ export const cheezyData = [
         picture: require('../assets/images/Cheezy/onion.png'),
     },
 ]
+
+export interface IMyCartData {
+    id: number
+    name: string
+    price: string
+    quantity: number
+    picture: ImageSourcePropType
+}
 
 export const myCartData = [
     {
