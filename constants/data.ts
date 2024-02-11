@@ -34,7 +34,7 @@ export const homeData = [
     },
 ]
 
-export interface IHCheezyData {
+export interface ICheezyData {
     id: number
     name: string
     price: string

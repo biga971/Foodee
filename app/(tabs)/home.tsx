@@ -4,6 +4,7 @@ import { Text, View } from '@/components/Themed';
 import { COLORS, FONTS, SIZES, Spacing } from '@/constants';
 import { Ionicons } from '@expo/vector-icons';
 import { useState } from 'react';
+import HorizontalFlatList from '../../components/HorizontalFlatList'
 
 export default function TabTwoScreen() {
 
@@ -68,10 +69,70 @@ export default function TabTwoScreen() {
         <Text style={{...FONTS.largeTitle, color: COLORS.darkText, marginHorizontal: Spacing.margin.lg,}}>Today’s Menu</Text>
 
         <View style={{
-
+          marginTop: 19,
+          marginBottom: 26,
+          marginHorizontal: Spacing.margin.lg,
+          paddingHorizontal: Spacing.padding.lg,
+          paddingVertical: Spacing.padding.lg * 1.9,
+          backgroundColor: COLORS.green,
+          borderRadius: Spacing.borderRadius.lg,
+          ...styles.shadowGreen,
         }}>
+          <View style={{
+            backgroundColor: 'transparent',
+          }}>
+            <Text style={{...FONTS.h1, color: COLORS.white,}}>Free Donut!</Text>
+            <Text style={{...FONTS.h3, color: '#F4F1DE',}}>For orders over $20</Text>
+            <Image style={{
+              position: 'absolute',
+              width: 131,
+              height: 121, 
+              right: -15,
+              top: -65,
+              }} 
+              source={require('../../assets/images/home/donut.png')}
+            />
+          </View>
+        </View>
+
+        <HorizontalFlatList />
+
+        <Text style={{
+          ...FONTS.largeTitle, 
+          color: COLORS.darkText, 
+          marginHorizontal: Spacing.margin.lg,
+          marginVertical: Spacing.margin.medium,
+          }}
+        >
+          Best Offers 💕
+        </Text>
+
+        <View style={{
+          flexDirection: 'row',
+          marginHorizontal: Spacing.margin.lg,
+          paddingHorizontal: Spacing.padding.lg,
+          paddingVertical: Spacing.padding.base,
+          backgroundColor: COLORS.white,
+          borderRadius: Spacing.borderRadius.lg,
+          gap: 20,
+          ...styles.shadow,
+        }}>
+          <View style={{
+            height: 88,
+            width: 88,
+          }}>
+            <Image style={{height: 82, width: 63,}} source={require('../../assets/images/home/hotDog.png')}/>
+          </View>
+          
+          <View style={{
+
+          }}>
+            <Text style={{...FONTS.h1, color: COLORS.darkText,}}>Frenchdog</Text>
+            <Text style={{...FONTS.h3, color: COLORS.darkText, }}>Tasty&Spicy 🌶🌶🌶</Text>
+          </View>
           
         </View>
+
       </SafeAreaView>
       
     </View>
@@ -81,23 +142,23 @@ export default function TabTwoScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    /* alignItems: 'center',
-    justifyContent: 'center', */
-  },
-  title: {
-    fontSize: 20,
-    fontWeight: 'bold',
-  },
-  separator: {
-    marginVertical: 30,
-    height: 1,
-    width: '80%',
   },
   shadow: {
     shadowColor: COLORS.shadowNotificationColor,
     shadowOffset: {
       width: 0,
       height: 8,
+    },
+    shadowOpacity: 0.32,
+    shadowRadius: 5.46,
+
+    elevation: 9,
+  },
+  shadowGreen: {
+    shadowColor: COLORS.greenShadowColor,
+    shadowOffset: {
+      width: 0,
+      height: 16,
     },
     shadowOpacity: 0.32,
     shadowRadius: 5.46,
