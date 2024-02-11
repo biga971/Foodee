@@ -1,7 +1,7 @@
 const sm: number = 12;
 const base: number = 15;
-const lg: number = 20;
-const xl: number = 30;
+const lg: number = 19;
+const xl: number = 26;
 const xxl: number = 40;
 export default {
   padding: {

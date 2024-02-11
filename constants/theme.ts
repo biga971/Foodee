@@ -47,6 +47,7 @@ export const FONTS = {
     h3: { fontFamily: "Unbounded-Light", fontSize: SIZES.h3, lineHeight: 22 },
     h3Bold: { fontFamily: "Unbounded-Bold", fontSize: SIZES.h3, lineHeight: 22 },
     h4: { fontFamily: "Unbounded-Regular", fontSize: SIZES.h4, lineHeight: 22 },
+    h4Light: { fontFamily: "Unbounded-Light", fontSize: SIZES.h4, lineHeight: 22 },
     h5: { fontFamily: "Unbounded-Regular", fontSize: SIZES.h5, lineHeight: 22 },
     small: { fontFamily: "Unbounded-Regular", fontSize: SIZES.small, lineHeight: 20 },
     smallLight: { fontFamily: "Unbounded-Light", fontSize: SIZES.small, lineHeight: 20 },
