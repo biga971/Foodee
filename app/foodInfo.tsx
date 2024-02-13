@@ -1,9 +1,11 @@
-import { COLORS, FONTS, Spacing } from '@/constants'
+import { COLORS, FONTS, Spacing, cheezyData } from '@/constants'
 import React from 'react'
-import { SafeAreaView, View, Text, TouchableOpacity, Image } from 'react-native'
+import { SafeAreaView, View, Text, TouchableOpacity, Image, StyleSheet } from 'react-native'
 import { Ionicons } from '@expo/vector-icons';
+import { useRouter } from 'expo-router';
 
 const FoodInfo = () => {
+    const router = useRouter()
     return (
         <View style={{
           flex: 1,
@@ -36,7 +38,8 @@ const FoodInfo = () => {
                                 width: 44,
                                 backgroundColor: COLORS.pinkBox,
                                 borderRadius: Spacing.borderRadius.sm,
-                           }} 
+                           }}
+                           onPress={ () => router.back() }
                         >
                             <Ionicons name="close" size={32} color={COLORS.pink} />
                         </TouchableOpacity>
@@ -90,8 +93,50 @@ const FoodInfo = () => {
                     </View>
                 </SafeAreaView>
             </View>
+
+            <Text style={{ 
+                ...FONTS.h1,
+                color: COLORS.darkText,
+                marginTop: Spacing.margin.xl,
+                marginHorizontal: Spacing.margin.lg,
+                }}
+            >
+                Add More Flavor 🤩
+            </Text>
+
+            <View style={{
+                flexDirection: 'row',
+                justifyContent: 'space-between',
+                marginHorizontal: Spacing.margin.lg,
+            }}>
+                {cheezyData.map( (data, index) => (
+                    <View style={{
+                        backgroundColor: COLORS.yellowNotification,
+                        width: 108,
+                        borderRadius: Spacing.borderRadius.lg,
+                    }}>
+                        <Image style={{height: 100, width: 92}} source={data.picture} />
+                    </View>
+                ))}
+            </View>
         </View>
     )
 }
 
 export default FoodInfo
+
+
+//D6D3C0
+
+const styles = StyleSheet.create({
+    shadow: {
+        shadowColor: '#D6D3C0',
+        shadowOffset: {
+            width: 0,
+            height: 10,
+        },
+        shadowOpacity: 1,
+        shadowRadius: 4.65,
+        elevation: 9,
+    },
+});
