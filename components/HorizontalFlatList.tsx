@@ -25,7 +25,7 @@ const HorizontalFlatlist = () => {
                     width: 104,
                     backgroundColor: color,
                     alignItems: "center",
-                    //justifyContent: "center",
+                    marginVertical: Spacing.margin.lg,
                     ...styles.shadow   
                 }}
                 onPress={() => onPress()}
@@ -33,11 +33,11 @@ const HorizontalFlatlist = () => {
                 <Text style={{ ...FONTS.small, color: COLORS.darkText, alignItems: 'center', justifyContent:'center' }}>{data.name}</Text>
                 <View style={{
                     width: '100%',
-                    alignItems: 'flex-end',
+                    alignItems: 'flex-end', 
                 }}>
-
+                   <Image style={{height: 94, width: 96, borderBottomRightRadius: Spacing.borderRadius.lg,}} source={data.picture} />
                 </View>
-                <Image style={{height: 94, width: 96,}} source={data.picture} resizeMode='stretch' />
+                
             </TouchableOpacity>   
             
         );
@@ -49,9 +49,10 @@ const HorizontalFlatlist = () => {
             showsHorizontalScrollIndicator={false}
             keyExtractor={(item: IHomeData) => `${item.id}`}
             renderItem={({item}) => <Item data={item} />}
-           /*  ListFooterComponent={(<View style={{
-                //width: Spacing.margin.lg
-            }}/>)} */
+            ListHeaderComponent={<View style={{
+                width: Spacing.margin.lg
+            }}/>
+            }
         />
     )
 }
@@ -60,12 +61,12 @@ const HorizontalFlatlist = () => {
 
 const styles = StyleSheet.create({
     shadow: {
-        shadowColor: COLORS.tabShadowColor,
+        shadowColor: COLORS.yellowShadowColor,
         shadowOffset: {
             width: 0,
             height: 10,
         },
-        shadowOpacity: 0.29,
+        shadowOpacity: 1,
         shadowRadius: 4.65,
         elevation: 9,
     },

@@ -15,8 +15,7 @@ export const COLORS = {
     yellowShadowColor: 'rgba(242, 204, 143, 0.4)',
     tabShadowColor: 'rgba(194, 191, 172, 0.6)',
     pinkBox: '#F5CAC3',
-    pinkButton: '#F7EDE2',
-
+    pinkButton: '#F7EDE2',    
 };
 export const SIZES = {
     // font sizes
