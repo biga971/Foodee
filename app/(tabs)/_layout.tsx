@@ -100,6 +100,7 @@ export default function TabLayout() {
           iconSelected="cart-sharp"
           color={color} 
         />,
+        headerShown: false 
         }}
       />
        <Tabs.Screen

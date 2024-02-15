@@ -2,6 +2,7 @@ import React from 'react'
 import { FlatList , TouchableOpacity, Text, View, StyleSheet, Image } from 'react-native'
 import { Spacing, COLORS, FONTS, IHomeData, homeData  } from '../constants';
 import { useRouter } from 'expo-router';
+
 const HorizontalFlatlist = () => {
 
     const router = useRouter()
