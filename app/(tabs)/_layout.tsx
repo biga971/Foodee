@@ -100,7 +100,14 @@ export default function TabLayout() {
           iconSelected="cart-sharp"
           color={color} 
         />,
-        headerShown: false 
+        headerShown: false, 
+        //tabBarHideOnKeyboard: false 
+        tabBarStyle: {
+          position: "absolute",
+          width: 0,
+          height: 0,
+          bottom: -100
+        }
         }}
       />
        <Tabs.Screen

@@ -1,6 +1,6 @@
 import { COLORS, FONTS, SIZES, Spacing, cheezyData } from '@/constants'
 import React from 'react'
-import { SafeAreaView, View, Text, TouchableOpacity, Image, StyleSheet, ScrollView } from 'react-native'
+import { SafeAreaView, View, Text, TouchableOpacity, Image, StyleSheet, ScrollView, Platform } from 'react-native'
 import { Ionicons } from '@expo/vector-icons';
 import { useRouter } from 'expo-router';
 
@@ -210,7 +210,7 @@ const FoodInfo = () => {
                     flexDirection: 'row',
                     marginHorizontal: Spacing.margin.sm,
                     height: 92,
-                    bottom: 20,
+                    bottom: Platform.OS === 'android' ? 10 : 25,
                     backgroundColor: COLORS.white,
                     borderRadius: Spacing.borderRadius.lg,
                     padding: 8,
