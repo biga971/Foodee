@@ -4,18 +4,20 @@ import { COLORS, FONTS, SIZES, Spacing, cheezyData } from '@/constants';
 import { Ionicons } from '@expo/vector-icons';
 import { useRouter } from 'expo-router';
 import { myCartData } from '@/constants';
+import Animated, { FadeInDown } from 'react-native-reanimated';
 
 export default function TabOneScreen() {
   const router = useRouter()
   return (
     <View style={styles.container}>
       <SafeAreaView>
-        <View style={{
-          flexDirection: 'row',
-          justifyContent: 'space-between',
-          marginHorizontal: Spacing.margin.lg,
-            
-        }} >
+        <Animated.View style={{
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+            marginHorizontal: Spacing.margin.lg,  
+          }} 
+          //entering={FadeInDown.duration(400).delay(300)}
+        >
             <Text style={{ 
               ...FONTS.largeTitle,
               color: COLORS.darkText,
@@ -35,16 +37,18 @@ export default function TabOneScreen() {
             >
                 <Ionicons name="close" size={32} color={COLORS.pink} />
             </TouchableOpacity>
-        </View>
+        </Animated.View>
       </SafeAreaView>
 
       <ScrollView>
-      <View style={{
-        marginHorizontal: Spacing.margin.lg,
-        justifyContent: 'space-between',
-        flexDirection: 'row',
-        marginVertical: Spacing.margin.lg,
-      }}>
+      <Animated.View style={{
+          marginHorizontal: Spacing.margin.lg,
+          justifyContent: 'space-between',
+          flexDirection: 'row',
+          marginVertical: Spacing.margin.lg,
+        }}
+        entering={FadeInDown.duration(400).delay(300)}
+      >
         <View style={{
           alignItems: 'center',
         }}>
@@ -85,23 +89,29 @@ export default function TabOneScreen() {
           opacity: 0.25, 
           zIndex: -1, }} />
 
-      </View>
+      </Animated.View>
 
-      <View style={{
+      <Animated.View style={{
           flexDirection: 'row',
           justifyContent: 'space-between',
           alignItems: 'center',
           marginHorizontal: Spacing.margin.lg,
           marginBottom: Spacing.margin.lg,
-        }} 
+        }}
+        entering={FadeInDown.duration(400).delay(350)}
       >
         <Text style={{ ...FONTS.largeTitle, color: COLORS.darkText,}}>Order</Text>
         <Text style={{ ...FONTS.h2, color: COLORS.pink,}}>Clear all</Text>     
-      </View>
+      </Animated.View>
 
 
 
       {myCartData.map( (data, index) => (
+
+        <Animated.View 
+          key={index}
+          entering={FadeInDown.duration(400).delay(350 + data.id * 100)}
+        >
         <View 
           key={index}
           style= {{
@@ -149,16 +159,25 @@ export default function TabOneScreen() {
           </View>
           
         </View>
+
+        </Animated.View>
       ))}
 
-      <Text style={{ ...FONTS.largeTitle, color: COLORS.darkText,marginHorizontal: Spacing.margin.lg, marginTop: Spacing.margin.lg, }}>Don’t Forget ☺</Text>
+      <Animated.Text 
+        style={{ ...FONTS.largeTitle, color: COLORS.darkText,marginHorizontal: Spacing.margin.lg, marginTop: Spacing.margin.lg, }}
+        entering={FadeInDown.duration(400).delay(900)}
+      >
+        Don’t Forget ☺
+      </Animated.Text>
 
-      <View style={{
-              flexDirection: 'row',
-              justifyContent: 'space-between',
-              marginHorizontal: Spacing.margin.lg,
-              marginVertical: Spacing.margin.lg,
-      }}>
+      <Animated.View style={{
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        marginHorizontal: Spacing.margin.lg,
+        marginVertical: Spacing.margin.lg,
+      }}
+      entering={FadeInDown.duration(400).delay(950)}
+      >
         {cheezyData.map( (data, index) => (
             <View 
                 key={index}
@@ -181,24 +200,26 @@ export default function TabOneScreen() {
                 </View>
             </View>
         ))}
-      </View>
+      </Animated.View>
 
       <View style={{ height: 100, }} />
       </ScrollView>
 
-      <View style={{
-        position: 'absolute',
-        flexDirection: 'row',
-        marginHorizontal: Spacing.margin.sm,
-        height: 92,
-        bottom: Platform.OS === 'android' ? 10 : 25,
-        backgroundColor: COLORS.white,
-        borderRadius: Spacing.borderRadius.lg,
-        padding: 8,
-        gap: 8,
-        width: SIZES.width -  Spacing.margin.sm * 2,
-        ...styles.shadow
-      }}>
+      <Animated.View style={{
+          position: 'absolute',
+          flexDirection: 'row',
+          marginHorizontal: Spacing.margin.sm,
+          height: 92,
+          bottom: Platform.OS === 'android' ? 10 : 25,
+          backgroundColor: COLORS.white,
+          borderRadius: Spacing.borderRadius.lg,
+          padding: 8,
+          gap: 8,
+          width: SIZES.width -  Spacing.margin.sm * 2,
+          ...styles.shadow
+        }}
+        entering={FadeInDown.duration(400).delay(1000)}
+      >
               
 
           <View style={{
@@ -216,7 +237,7 @@ export default function TabOneScreen() {
               <Text style={{ ...FONTS.h3,color: COLORS.white,}}>Next Step</Text>
               <Text style={{ ...FONTS.h2Bold ,color: COLORS.white,}}>$85.18</Text>
           </View>
-      </View>
+      </Animated.View>
 
             
     </View>

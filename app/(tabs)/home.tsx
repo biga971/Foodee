@@ -6,6 +6,10 @@ import { Ionicons } from '@expo/vector-icons';
 import { useState } from 'react';
 import HorizontalFlatList from '../../components/HorizontalFlatList'
 
+import { MotiView } from 'moti';
+
+import Animated, { FadeInDown } from 'react-native-reanimated';
+
 export default function TabTwoScreen() {
 
   const [ searchText, setSearchText ] = useState('')
@@ -13,7 +17,20 @@ export default function TabTwoScreen() {
     <View style={styles.container}>
       <SafeAreaView>
         <ScrollView >
-          <View style={{
+          <MotiView 
+          
+          from={{
+            opacity: 0,
+            scale: 0.5,
+          }}
+          animate={{
+            opacity: 1,
+            scale: 1,
+          }}
+          transition={{
+            type: 'timing',
+          }}
+          style={{
             flexDirection: 'row',
             alignItems: 'center',
             backgroundColor: COLORS.yellowNotification,
@@ -26,7 +43,7 @@ export default function TabTwoScreen() {
           }}>
             <Image style={{height: 64, width: 64,}} source={require('../../assets/images/home/icon.png')}/>
             <Text style={{...FONTS.h3, color: COLORS.darkText, width: 200,}}>Welcome back, Pin! How Hungry are you?</Text>
-          </View>
+          </MotiView>
 
           <View style={{
             flexDirection: 'row',
@@ -42,7 +59,7 @@ export default function TabTwoScreen() {
               borderRadius: Spacing.borderRadius.sm,
               paddingHorizontal: Spacing.padding.lg,
               gap: 8,
-              width: SIZES.width - Spacing.margin.lg*2 - 12 - 44,
+              width: SIZES.width - Spacing.margin.lg * 2 - 12 - 44,
             }}>
               <Ionicons name='search' size={24} color={COLORS.darkText} />  
               <TextInput
@@ -67,9 +84,14 @@ export default function TabTwoScreen() {
             </TouchableOpacity>
           </View>
 
-          <Text style={{...FONTS.largeTitle, color: COLORS.darkText, marginHorizontal: Spacing.margin.lg,}}>Today’s Menu</Text>
+          <Animated.Text 
+            style={{...FONTS.largeTitle, color: COLORS.darkText, marginHorizontal: Spacing.margin.lg,}} 
+            entering={FadeInDown.duration(400).delay(250)}
+          >
+            Today’s Menu
+          </Animated.Text>
 
-          <View style={{
+          <Animated.View style={{
             marginTop: 19,
             //marginBottom: 26,
             marginHorizontal: Spacing.margin.lg,
@@ -78,13 +100,15 @@ export default function TabTwoScreen() {
             backgroundColor: COLORS.green,
             borderRadius: Spacing.borderRadius.lg,
             ...styles.shadowGreen,
-          }}>
+          }}
+          entering={FadeInDown.duration(400).delay(250)}
+          >
             <View style={{
               backgroundColor: 'transparent',
             }}>
-              <Text style={{...FONTS.h1, color: COLORS.white,}}>Free Donut!</Text>
-              <Text style={{...FONTS.h3, color: '#F4F1DE',}}>For orders over $20</Text>
-              <Image style={{
+              <Animated.Text style={{...FONTS.h1, color: COLORS.white,}} entering={FadeInDown.duration(400).delay(500)}>Free Donut!</Animated.Text>
+              <Animated.Text style={{...FONTS.h3, color: '#F4F1DE',}} entering={FadeInDown.duration(400).delay(500)}>For orders over $20</Animated.Text>
+              <Animated.Image style={{
                 position: 'absolute',
                 width: 131,
                 height: 121, 
@@ -92,21 +116,23 @@ export default function TabTwoScreen() {
                 top: -65,
                 }} 
                 source={require('../../assets/images/home/donut.png')}
+                entering={FadeInDown.duration(400).delay(700)}
               />
             </View>
-          </View>
+          </Animated.View>
             <HorizontalFlatList />
-          <Text style={{
+          <Animated.Text style={{
             ...FONTS.largeTitle, 
             color: COLORS.darkText, 
             marginHorizontal: Spacing.margin.lg,
             //marginVertical: Spacing.margin.medium,
             }}
+            entering={FadeInDown.duration(400).delay(250)}
           >
             Best Offers 💕
-          </Text>
+          </Animated.Text>
 
-          <View style={{
+          <Animated.View style={{
             flexDirection: 'row',
             marginHorizontal: Spacing.margin.lg,
             paddingHorizontal: Spacing.padding.lg,
@@ -117,22 +143,39 @@ export default function TabTwoScreen() {
             /* borderColor: COLORS.yellow,
             borderWidth: 1 , */
             ...styles.shadowBestOff,
-          }}>
+          }}
+          entering={FadeInDown.duration(400).delay(250)}
+          >
             <View style={{
               height: 88,
               width: 88,
-            }}>
-              <Image style={{height: 82, width: 63,}} source={require('../../assets/images/home/hotDog.png')}/>
+            }}
+            
+            >
+              <Animated.Image 
+              style={{height: 82, width: 63,}} 
+              source={require('../../assets/images/home/hotDog.png')}
+              entering={FadeInDown.duration(400).delay(700)}/>
             </View>
             
             <View style={{
 
             }}>
-              <Text style={{...FONTS.h1, color: COLORS.darkText,}}>Frenchdog</Text>
-              <Text style={{...FONTS.h3, color: COLORS.darkText, }}>Tasty&Spicy 🌶🌶🌶</Text>
+              <Animated.Text 
+                style={{...FONTS.h1, color: COLORS.darkText,}}
+                entering={FadeInDown.duration(400).delay(500)}
+              >
+                Frenchdog
+              </Animated.Text>
+              <Animated.Text 
+                style={{...FONTS.h3, color: COLORS.darkText, }}
+                entering={FadeInDown.duration(400).delay(500)}
+              >
+                Tasty&Spicy 🌶🌶🌶
+              </Animated.Text>
             </View>
             
-          </View>
+          </Animated.View>
 
           <View style={{ height: 62, marginTop: 30}}/>
         </ScrollView>

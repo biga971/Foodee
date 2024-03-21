@@ -2,6 +2,7 @@ import React from 'react'
 import { FlatList , TouchableOpacity, Text, View, StyleSheet, Image } from 'react-native'
 import { Spacing, COLORS, FONTS, IHomeData, homeData  } from '../constants';
 import { useRouter } from 'expo-router';
+import Animated, { FadeInRight } from 'react-native-reanimated';
 
 const HorizontalFlatlist = () => {
 
@@ -13,6 +14,8 @@ const HorizontalFlatlist = () => {
     const Item = ({data}: {data: IHomeData}) => {
         let color = COLORS.yellow
 
+        const Touchable = Animated.createAnimatedComponent(TouchableOpacity)
+        const time = data.id * 150 + 250
         if (data.id % 3 === 2) {
             color = COLORS.pinkBox
         }else if (data.id % 3 === 0) {
@@ -20,7 +23,7 @@ const HorizontalFlatlist = () => {
         }
         return (
         
-            <TouchableOpacity
+            <Touchable
                 style={{ 
                     marginRight: Spacing.margin.medium,
                     borderRadius: Spacing.borderRadius.lg,
@@ -32,16 +35,18 @@ const HorizontalFlatlist = () => {
                     ...styles.shadow   
                 }}
                 onPress={() => onPress()}
+                entering={FadeInRight.duration(400).delay(time)}
             >
                 <Text style={{ ...FONTS.small, color: COLORS.darkText, alignItems: 'center', justifyContent:'center' }}>{data.name}</Text>
-                <View style={{
+                <Animated.View style={{
                     width: '100%',
                     alignItems: 'flex-end', 
-                }}>
-                   <Image style={{height: 94, width: 96, borderBottomRightRadius: Spacing.borderRadius.lg,}} source={data.picture} />
-                </View>
+                }}
+                >
+                   <Animated.Image sharedTransitionTag='10' style={{height: 94, width: 96, borderBottomRightRadius: Spacing.borderRadius.lg,}} source={data.picture} />
+                </Animated.View>
                 
-            </TouchableOpacity>   
+            </Touchable>   
             
         );
     }

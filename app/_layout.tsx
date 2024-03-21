@@ -7,6 +7,9 @@ import { useEffect } from 'react';
 
 import { useColorScheme } from '@/components/useColorScheme';
 
+import 'react-native-reanimated'
+//import 'react-native-gesture-handler'
+
 export {
   // Catch any errors thrown by the Layout component.
   ErrorBoundary,
@@ -54,7 +57,7 @@ function RootLayoutNav() {
     <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
       <Stack>
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen name="foodInfo" options={{ headerShown: false }} />
+        <Stack.Screen name="foodInfo" options={{ headerShown: false, animation: 'fade' }} />
         <Stack.Screen name="modal" options={{ presentation: 'modal' }} />
       </Stack>
     </ThemeProvider>

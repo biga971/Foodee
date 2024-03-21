@@ -3,6 +3,7 @@ import React from 'react'
 import { SafeAreaView, View, Text, TouchableOpacity, Image, StyleSheet, ScrollView, Platform } from 'react-native'
 import { Ionicons } from '@expo/vector-icons';
 import { useRouter } from 'expo-router';
+import Animated from 'react-native-reanimated';
 
 const FoodInfo = () => {
     const router = useRouter()
@@ -45,11 +46,13 @@ const FoodInfo = () => {
                             <Ionicons name="close" size={32} color={COLORS.pink} />
                         </TouchableOpacity>
                     </View>
-                    <View style={{
+                    <Animated.View style={{
                         marginHorizontal: Spacing.margin.lg,
                         gap: 4,
                         marginTop: Spacing.margin.lg + 1,
-                    }}>
+                    }}
+                   
+                    >
                         <View style={{
                             backgroundColor: '#F7EDE2',
                             borderRadius: Spacing.borderRadius.lg,
@@ -80,7 +83,7 @@ const FoodInfo = () => {
                             </Text>
                         </View>
 
-                        <Image 
+                        <Animated.Image 
                             style={{ 
                                 position: 'absolute', 
                                 height: 256, 
@@ -89,9 +92,10 @@ const FoodInfo = () => {
                                 right: -30,
                             }} 
                             source={require('../assets/images/Cheezy/burger.png')}
-                            resizeMode='contain' 
+                            resizeMode='contain'
+                            sharedTransitionTag='10'
                         />
-                    </View>
+                    </Animated.View>
                 </SafeAreaView>
             </View>
 
